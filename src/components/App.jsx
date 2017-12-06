@@ -32,5 +32,5 @@ class App extends React.Component {
 window.App = App;
 
 
-ReactDOM.render(<VideoList videos={window.exampleVideoData}/>, document.getElementsByClassName('video-list'));
-ReactDOM.render(<VideoPlayer />, document.getElementsByClassName('video-player'));
+ReactDOM.render(<VideoList videos={window.fakeVideoData}/>, document.getElementsByClassName('video-list'));
+ReactDOM.render(<VideoPlayer video={window.fakeVideoData}/>, document.getElementsByClassName('video-player'));
