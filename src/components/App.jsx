@@ -34,4 +34,3 @@ window.App = App;
 
 ReactDOM.render(<VideoList videos={window.exampleVideoData}/>, document.getElementsByClassName('video-list'));
 ReactDOM.render(<VideoPlayer />, document.getElementsByClassName('video-player'));
-console.log('test')
