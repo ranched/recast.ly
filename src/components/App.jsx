@@ -6,19 +6,25 @@ class App extends React.Component {
       currentVideo: window.exampleVideoData[0],
       videos: window.exampleVideoData
       
-    }
+    };
+  }
+
+  updateVideos = (responseVideos) => {
+    console.log('running')
+    this.setState({videos: responseVideos});
   }
   
-  selectVideo = (video) => {
+  selectVideo(video) {
     this.setState({currentVideo: video});
   }
 
+  
   render() {
     return (
     <div>
       <nav className="navbar">
-        <div className="col-md-6 offset-md-3">
-          <div><h5><em>search</em> view goes here</h5></div>
+        <div className="col-md-6 offset-md-3">      
+          <Search updateVideo={this.updateVideos}/>
         </div>
       </nav>
       <div className="row">
@@ -26,7 +32,7 @@ class App extends React.Component {
           <VideoPlayer video={this.state.currentVideo}/>
         </div>
         <div className="col-md-5">
-          <VideoList select={this.selectVideo} videos={this.state.videos}/>
+          <VideoList select={this.selectVideo.bind(this)} videos={this.state.videos}/>
         </div>
       </div>
     </div>
