@@ -2,8 +2,17 @@ class App extends React.Component {
   
   constructor (props) {
     super(props);
+    this.state = {
+      currentVideo: window.exampleVideoData[0],
+      videos: window.exampleVideoData
+      
+    }
   }
   
+  selectVideo = (video) => {
+    this.setState({currentVideo: video});
+  }
+
   render() {
     return (
     <div>
@@ -13,11 +22,11 @@ class App extends React.Component {
         </div>
       </nav>
       <div className="row">
-        <div className="col-md-7 video-player">
-          <div><h5><em>videoPlayer</em> view goes here</h5></div>
+        <div className="col-md-7">
+          <VideoPlayer video={this.state.currentVideo}/>
         </div>
-        <div className="video-list col-md-5">
-          <div><h5><em>videoList</em> view goes here</h5></div>
+        <div className="col-md-5">
+          <VideoList select={this.selectVideo} videos={this.state.videos}/>
         </div>
       </div>
     </div>
@@ -32,5 +41,5 @@ class App extends React.Component {
 window.App = App;
 
 
-ReactDOM.render(<VideoList videos={window.fakeVideoData}/>, document.getElementsByClassName('video-list'));
-ReactDOM.render(<VideoPlayer video={window.fakeVideoData}/>, document.getElementsByClassName('video-player'));
+//ReactDOM.render(<VideoList videos={window.exampleVideoData}/>, document.getElementsByClassName('video-list'));
+//ReactDOM.render(<VideoPlayer video={window.exampleVideoData}/>, document.getElementsByClassName('video-player'));
