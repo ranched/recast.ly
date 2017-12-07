@@ -1,15 +1,23 @@
 var searchYouTube = (options, callback) => {
-  $.ajax({
+  
+  let maxResults = options.max;
+  let q = options.query;
+  let key = options.key;
+  let part = 'snippet';
+
+  let ajaxRequestObject = {
     url: 'https://www.googleapis.com/youtube/v3/search',
     type: 'GET',
-    data: options,
+    data: { key: key, q: q, maxResults: maxResults, part: part },
 
     success: function(data) {
-      console.log('success')
+      console.log('success');
       callback(data.items);
     }
     
-  });
+  };  
+
+  $.ajax(ajaxRequestObject);
 };
 
 window.searchYouTube = searchYouTube;
